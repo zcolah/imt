@@ -27,6 +27,42 @@ SaleAmount [float] NOT NULL
 );
 GO
 
+-- =============================
+-- Begin load of unknown member
+-- =============================
+SET IDENTITY_INSERT dbo.factSalesActual ON;
+
+INSERT INTO dbo.factSalesActual(
+	factSalesActualKey,
+	dimProductKey, 
+	dimChannelKey,
+	dimResellerKey,
+	dimCustomerKey,
+	dimStoreKey,
+	SaleQuantity, 
+	SaleAmount,
+	dimSaleDateKey,
+	SalesHeaderID,
+	SalesDetailID
+)
+VALUES
+( 
+-1,
+-1, 
+-1,
+-1,
+-1,
+-1,
+0.0,
+0.0,
+-1, 
+-1,
+-1);
+
+-- Turn the identity insert to OFF so new rows auto assign identities
+SET IDENTITY_INSERT dbo.factSalesActual OFF;
+GO
+
 
 ----------------
 ---Load Table
